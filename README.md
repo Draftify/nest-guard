@@ -1,3 +1,5 @@
+## Public and private route implementation with jwt token verification 
+
 ## .env file example
 ```bash
 JWT_SECRET=YOUR_SECRET_KEY_HERE
