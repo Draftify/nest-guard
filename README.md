@@ -1,5 +1,6 @@
 ## Public and private route implementation with jwt token verification 
 ## Getting started 
+- Clone yhe repository 
 ## .env file example
 ```bash
 JWT_SECRET=YOUR_SECRET_KEY_HERE
