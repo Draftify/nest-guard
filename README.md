@@ -1,4 +1,4 @@
-## Public and private route implementation with jwt token verification 
+## Public and private route implementation with jwt token verification (nest.js)
 ## Getting started 
 - Clone the repository 
 ## .env file example
