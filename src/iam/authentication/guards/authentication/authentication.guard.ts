@@ -3,12 +3,11 @@ import {
   ExecutionContext,
   Injectable,
   UnauthorizedException,
-} from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
-import { Observable } from 'rxjs';
-import { AUTH_TYPE_KEY } from '../../decorators/auth.decorator';
-import { AuthType } from '../../enums/auth-type.enum';
-import { AccessTokenGuard } from '../access-token/access-token.guard';
+} from "@nestjs/common";
+import { Reflector } from "@nestjs/core";
+import { AUTH_TYPE_KEY } from "../../decorators/auth.decorator";
+import { AuthType } from "../../enums/auth-type.enum";
+import { AccessTokenGuard } from "../access-token/access-token.guard";
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
@@ -37,8 +36,11 @@ export class AuthenticationGuard implements CanActivate {
     for (const instance of guards) {
       const canActivate = await Promise.resolve(
         instance.canActivate(context),
-      ).catch((err) => {
-        error = err;
+      ).catch((err: unknown) => {
+        error =
+          err instanceof UnauthorizedException
+            ? err
+            : new UnauthorizedException();
       });
 
       if (canActivate) {
